@@ -4,6 +4,8 @@ import Navigation from './component/Navigation/Navigation'
 import Button from './component/Button/Button'
 import SignIn from './component/SignIn/SignIn'
 import Register from './component/Register/Register'
+import Movies from './component/moviesdb/Movies'
+
 const initialState = {
 	route: "home",
 	signedIn: false,
@@ -38,9 +40,12 @@ class App extends Component {
 					<Register onRouteChange={this.onRouteChange}/>
 					:
 					<div className='main'>
-					<div className='btn-class'>
+					<div className='btn-class pb7'>
 						<h2>This website will pick a movie for you</h2>
 						<Button />
+					</div>
+					<div className='pt4' id='top100'>
+						<Movies />
 					</div>
 				</div>
 				}
