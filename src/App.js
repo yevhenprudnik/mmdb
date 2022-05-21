@@ -6,7 +6,6 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			nav_click: false,
 		}
 	}
 	render() {
