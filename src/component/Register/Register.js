@@ -1,74 +1,96 @@
-import React from 'react';
-import swal from 'sweetalert';
+import React from 'react'
+import swal from 'sweetalert'
+import './Register.css'
 class Register extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            password: '',
-            username: ''
-        }
-    }
-    onUsernameChange = (event) => {
-        this.setState({name: event.target.value})
-    }
-    onPasswordChange = (event) => {
-        this.setState({password : event.target.value})
-    }
-    onSubmitRegister = () => {
-        fetch('http://localhost:3000/register', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                password: this.state.password,
-                username: this.state.name
-            })
-        })
-        .then(response => response.json())
-        .then(data =>{
-            console.log(data);
-            if(data !== 'You are already registered, please sign in'){
-                swal("Good job!", "You did it))", "success");
-                this.props.onRouteChange('home')
-            }
-            else{
-                swal ( "Something wrong" ,  "Please try to deal with this error by yourself" ,  "error" )
-            }
-        })
-    }
+	constructor(props) {
+		super(props)
+		this.state = {
+			password: '',
+			username: '',
+		}
+	}
+	onUsernameChange = event => {
+		this.setState({ name: event.target.value })
+	}
+	onPasswordChange = event => {
+		this.setState({ password: event.target.value })
+	}
+	onSubmitRegister = () => {
+		fetch('http://localhost:3000/register', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				password: this.state.password,
+				username: this.state.name,
+			}),
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data)
+				if (data !== 'You are already registered, please sign in') {
+					swal('Good job!', 'You did it))', 'success')
+					this.props.onRouteChange('home')
+				} else {
+					swal(
+						'Something wrong',
+						'Please try to deal with this error by yourself',
+						'error'
+					)
+				}
+			})
+	}
 
-
-    render() {
-        const {onRouteChange} = this.props;
-        return (
-            <article className="pa6 white">
-                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                <legend className="ph0 mh0 fw6 clip">Sign Up</legend>
-                <div className="mt3">
-                    <label className="db fw4 lh-copy f6" htmlFor="name">Username</label>
-                    <input
-                    onChange={this.onUsernameChange}
-                    className="white pa2 input-reset ba bg-transparent w-100 measure" type="name" name="name"  id="name"/>
-                </div>
-                <div className="mt3">
-                    <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                    <input
-                    onChange={this.onPasswordChange}
-                    className="white pa2 input-reset ba bg-transparent" type="password" name="password"  id="password"/>
-                </div>
-                </fieldset>
-                <div className="mt3"><input 
-                onClick={this.onSubmitRegister}
-                className="white ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6" 
-                type="submit" 
-                value="Register"/></div>
-                <div className="mt3"><input 
-                onClick={() => onRouteChange('signIn')}
-                className="white ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6" 
-                type="submit" 
-                value="Sign In"/></div>
-            </article>
-        );
-    }
+	render() {
+		const { onRouteChange } = this.props
+		return (
+			<div className='cont'>
+				<article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5'>
+					<main className='pa4 black-80'>
+						<form className='measure'>
+							<fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
+								<legend className='f1 fw4 ph0 mh0 text-space'>Register</legend>
+								<div className='mt3'>
+									<label className='db fw6 lh-copy f5 text-space' for='name'>
+										Name
+									</label>
+									<input
+										onChange={this.onUsernameChange}
+										className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+										type='text'
+										name='name'
+										id='name'
+									/>
+								</div>
+								<div className='mv3'>
+									<label
+										className='db fw6 lh-copy f5 text-space'
+										for='password'
+									>
+										Password
+									</label>
+									<input
+										onChange={this.onPasswordChange}
+										className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+										type='password'
+										name='password'
+										id='password'
+									/>
+								</div>
+							</fieldset>
+							<div className=''>
+								<input
+									onClick={this.onSubmitRegister}
+									className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib'
+									type='submit'
+									value='Register'
+								/>
+							</div>
+						</form>
+					</main>
+				</article>
+			</div>
+		)
+	}
 }
 
-export default Register;
+export default Register
