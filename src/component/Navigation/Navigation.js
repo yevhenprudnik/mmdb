@@ -11,7 +11,7 @@ const Navigation = ({ onRouteChange, signedIn}) => {
 				</div>
 				<ul className='nav-links'>
 					<li>
-						<a href='#'>Log In</a>
+						<a onClick={() => {onRouteChange("signIn")}} href='#'>Log In</a>
 					</li>
 					<li>
 						<a href='#'>Register</a>
