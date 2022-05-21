@@ -1,6 +1,6 @@
 import React from 'react'
 import './Navigation.css'
-const Navigation = () => {
+const Navigation = ({ onRouteChange, signedIn}) => {
 	return (
 		<div className='stat'>
 			<nav>
