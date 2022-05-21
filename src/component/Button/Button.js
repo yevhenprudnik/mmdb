@@ -1,18 +1,11 @@
 import React from 'react'
+import { Scrollchor } from 'react-scrollchor';
 import './Button.css'
 const Button = () => {
 	return (
 		<div className='center'>
-			<div className='btn-center'>
-				<h1 className='btn pointer pa2'>
-					<a href='#'>Top 100</a>
-				</h1>
-			</div>
-			<div>
-				<h1 className='btn pointer pa2'>
-					<a href='#'>Generate</a>
-				</h1>
-			</div>
+				<Scrollchor className='btn-center f3 btn pointer pa2 grow' to="#top100" animate={{offset: 10, duration: 600}} href='#top100'>Top 100</Scrollchor>
+				<Scrollchor className='btn-center f3 btn pointer pa2 grow' to="#top100" animate={{offset: 10, duration: 600}} href='#top100'>Generate</Scrollchor>
 		</div>
 	)
 }
