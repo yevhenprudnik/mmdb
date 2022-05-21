@@ -3,6 +3,7 @@ import './App.css'
 import Navigation from './component/Navigation/Navigation'
 import Button from './component/Button/Button'
 import SignIn from './component/SignIn/SignIn'
+import Register from './component/Register/Register'
 const initialState = {
 	route: "home",
 	signedIn: false,
@@ -28,8 +29,14 @@ class App extends Component {
 					<Navigation signedIn={this.state.signedIn} onRouteChange = {this.onRouteChange}/>
 				</div>
 				{
-					this.state.route == "signIn" ? <SignIn onRouteChange={this.onRouteChange}/> 
-					: 
+					this.state.route == "signIn" 
+					? 
+					<SignIn onRouteChange={this.onRouteChange}/> 
+					:
+					this.state.route == "register"
+					?
+					<Register onRouteChange={this.onRouteChange}/>
+					:
 					<div className='main'>
 					<div className='btn-class'>
 						<h2>This website will pick a movie for you</h2>

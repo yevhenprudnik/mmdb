@@ -14,7 +14,7 @@ const Navigation = ({ onRouteChange, signedIn}) => {
 						<a onClick={() => {onRouteChange("signIn")}} href='#'>Log In</a>
 					</li>
 					<li>
-						<a href='#'>Register</a>
+						<a onClick={() => {onRouteChange("register")}} href='#'>Register</a>
 					</li>
 				</ul>
 			</nav>

@@ -1,43 +1,42 @@
 import React from 'react';
 import swal from 'sweetalert';
-
-
-class SignIn extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            password: '',
+            username: ''
         }
     }
     onUsernameChange = (event) => {
-        this.setState({username : event.target.value})
+        this.setState({name: event.target.value})
     }
     onPasswordChange = (event) => {
         this.setState({password : event.target.value})
     }
-
-    onSubmitSignIn = () => {
-        fetch('http://localhost:3000/signIn', {
+    onSubmitRegister = () => {
+        fetch('http://localhost:3000/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
+                username: this.state.name
             })
         })
         .then(response => response.json())
         .then(data =>{
-            if(data !== "error"){
-                //this.props.loadUser(data)
-                swal("Good job!", "You signed in!", "success");
-                this.props.onRouteChange("home")
+            console.log(data);
+            if(data !== 'You are already registered, please sign in'){
+                swal("Good job!", "You did it))", "success");
+                this.props.onRouteChange('home')
             }
             else{
-                swal ( "Oops" ,  "Wrong email or password!" ,  "error" )
+                swal ( "Something wrong" ,  "Please try to deal with this error by yourself" ,  "error" )
             }
         })
     }
+
+
     render() {
         const {onRouteChange} = this.props;
         return (
@@ -45,10 +44,10 @@ class SignIn extends React.Component {
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="ph0 mh0 fw6 clip">Sign Up</legend>
                 <div className="mt3">
-                    <label className="db fw4 lh-copy f6" htmlFor="email-address">Username</label>
+                    <label className="db fw4 lh-copy f6" htmlFor="name">Username</label>
                     <input
                     onChange={this.onUsernameChange}
-                    className="white pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address"  id="email-address"/>
+                    className="white pa2 input-reset ba bg-transparent w-100 measure" type="name" name="name"  id="name"/>
                 </div>
                 <div className="mt3">
                     <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
@@ -56,20 +55,20 @@ class SignIn extends React.Component {
                     onChange={this.onPasswordChange}
                     className="white pa2 input-reset ba bg-transparent" type="password" name="password"  id="password"/>
                 </div>
+                </fieldset>
                 <div className="mt3"><input 
-                onClick={() => onRouteChange('register')}
+                onClick={this.onSubmitRegister}
                 className="white ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6" 
                 type="submit" 
                 value="Register"/></div>
-                </fieldset>
                 <div className="mt3"><input 
-                onClick={this.onSubmitSignIn}
+                onClick={() => onRouteChange('signIn')}
                 className="white ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6" 
                 type="submit" 
-                value="Sign In"/></div> 
+                value="Sign In"/></div>
             </article>
         );
     }
 }
 
-export default SignIn;
+export default Register;
