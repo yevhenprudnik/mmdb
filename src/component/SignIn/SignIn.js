@@ -17,7 +17,7 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		fetch('http://localhost:3000/signIn', {
+		fetch('http://localhost:3001/signIn', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -31,6 +31,7 @@ class SignIn extends React.Component {
 					//this.props.loadUser(data)
 					swal('Good job!', 'You signed in!', 'success')
 					this.props.onRouteChange('home')
+					this.props.onUserChange(this.state.username)
 				} else {
 					swal('Oops', 'Wrong email or password!', 'error')
 				}
@@ -48,7 +49,7 @@ class SignIn extends React.Component {
 								<div className='mt3'>
 									<label
 										className='db fw6 lh-copy f5 text-space'
-										for='email-address'
+										htmlFor='email-address'
 									>
 										Name
 									</label>
@@ -63,7 +64,7 @@ class SignIn extends React.Component {
 								<div className='mv3'>
 									<label
 										className='db fw6 lh-copy f5 text-space'
-										for='password'
+										htmlFor='password'
 									>
 										Password
 									</label>

@@ -9,6 +9,7 @@ import Movies from './component/moviesdb/Movies'
 const initialState = {
 	route: "home",
 	signedIn: false,
+	username: '',
 }
 class App extends Component {
 	constructor() {
@@ -20,9 +21,12 @@ class App extends Component {
 			this.setState(initialState)
 		}
 		else if (route === 'home'){
-			this.setState({isSignedIn: true})
+			this.setState({signedIn: true})
 		}
 		this.setState({route: route});
+	}
+	onUserChange = (username) => {
+		this.setState({username : username})
 	}
 	render() {
 		return (
@@ -33,11 +37,11 @@ class App extends Component {
 				{
 					this.state.route == "signIn" 
 					? 
-					<SignIn onRouteChange={this.onRouteChange}/> 
+					<SignIn onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange}/> 
 					:
 					this.state.route == "register"
 					?
-					<Register onRouteChange={this.onRouteChange}/>
+					<Register onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange}/>
 					:
 					<div className='main'>
 					<div className='btn-class pb7'>
