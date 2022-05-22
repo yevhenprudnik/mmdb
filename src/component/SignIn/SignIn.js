@@ -32,6 +32,7 @@ class SignIn extends React.Component {
 					swal('Good job!', 'You signed in!', 'success')
 					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
+					this.props.onSignIn()
 				} else {
 					swal('Oops', 'Wrong email or password!', 'error')
 				}

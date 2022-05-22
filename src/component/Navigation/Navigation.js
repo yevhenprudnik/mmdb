@@ -4,7 +4,7 @@ const Navigation = ({ onRouteChange, signedIn }) => {
 	return (
 		<div className='stat'>
 			{
-				signedIn  == true
+				signedIn
 				? 
 				<nav>
 					<div className='logo'>
