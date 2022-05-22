@@ -16,7 +16,7 @@ class Register extends React.Component {
 		this.setState({ password: event.target.value })
 	}
 	onSubmitRegister = () => {
-		fetch('http://localhost:3000/register', {
+		fetch('http://localhost:3001/register', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -30,6 +30,7 @@ class Register extends React.Component {
 				if (data !== 'You are already registered, please sign in') {
 					swal('Good job!', 'You did it))', 'success')
 					this.props.onRouteChange('home')
+					this.props.onUserChange(this.state.username)
 				} else {
 					swal(
 						'Something wrong',
@@ -41,7 +42,7 @@ class Register extends React.Component {
 	}
 
 	render() {
-		const { onRouteChange } = this.props
+		const { onRouteChange, onUserChange } = this.props
 		return (
 			<div className='cont'>
 				<article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5'>
@@ -50,7 +51,7 @@ class Register extends React.Component {
 							<fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
 								<legend className='f1 fw4 ph0 mh0 text-space'>Register</legend>
 								<div className='mt3'>
-									<label className='db fw6 lh-copy f5 text-space' for='name'>
+									<label className='db fw6 lh-copy f5 text-space' htmlFor='name'>
 										Name
 									</label>
 									<input
@@ -64,7 +65,7 @@ class Register extends React.Component {
 								<div className='mv3'>
 									<label
 										className='db fw6 lh-copy f5 text-space'
-										for='password'
+										htmlFor='password'
 									>
 										Password
 									</label>

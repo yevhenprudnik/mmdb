@@ -3,6 +3,36 @@ import './Navigation.css'
 const Navigation = ({ onRouteChange, signedIn }) => {
 	return (
 		<div className='stat'>
+			{
+				signedIn  == true
+				? 
+				<nav>
+					<div className='logo'>
+					<h4>
+						<a
+							onClick={() => {
+								onRouteChange('home')
+							}}
+							href='#'
+						>
+							MMDB
+						</a>
+					</h4>
+				</div>
+				<ul className='nav-links'>
+					<li>
+						<a
+							onClick={() => {
+								onRouteChange('signOut')
+							}}
+							href='#'
+						>
+							Sign Out
+						</a>
+					</li>
+				</ul>
+			</nav>
+			:
 			<nav>
 				<div className='logo'>
 					<h4>
@@ -39,6 +69,7 @@ const Navigation = ({ onRouteChange, signedIn }) => {
 					</li>
 				</ul>
 			</nav>
+			}
 		</div>
 	)
 }

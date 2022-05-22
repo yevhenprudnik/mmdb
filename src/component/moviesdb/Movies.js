@@ -7,7 +7,7 @@ const Movies = () => {
             <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
             <div>
                 <h2>Matrix</h2>
-                <p> <h3>2</h3></p>
+                <h3>2</h3>
                 <p>2001</p>
             </div>
         </div>
@@ -15,7 +15,7 @@ const Movies = () => {
             <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
             <div>
                 <h2>Matrix</h2>
-                <p> <h3>2</h3></p>
+                <h3>2</h3>
                 <p>2001</p>
             </div>
         </div>
@@ -23,7 +23,7 @@ const Movies = () => {
             <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
             <div>
                 <h2>Matrix</h2>
-                <p> <h3>2</h3></p>
+                <h3>2</h3>
                 <p>2001</p>
             </div>
         </div>
