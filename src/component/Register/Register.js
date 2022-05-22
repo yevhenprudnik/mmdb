@@ -31,6 +31,7 @@ class Register extends React.Component {
 					swal('Good job!', 'You did it))', 'success')
 					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
+					this.props.onSignIn()
 				} else {
 					swal(
 						'Something wrong',

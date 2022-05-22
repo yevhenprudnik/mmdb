@@ -20,13 +20,13 @@ class App extends Component {
 		if (route === 'signOut') {
 			this.setState(initialState)
 		}
-		else if (route === 'home'){
-			this.setState({signedIn: true})
-		}
 		this.setState({route: route});
 	}
 	onUserChange = (username) => {
 		this.setState({username : username})
+	}
+	onSignIn = () => {
+		this.setState({signedIn: true})
 	}
 	render() {
 		return (
@@ -37,11 +37,11 @@ class App extends Component {
 				{
 					this.state.route == "signIn" 
 					? 
-					<SignIn onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange}/> 
+					<SignIn onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange} onSignIn = {this.onSignIn}/> 
 					:
 					this.state.route == "register"
 					?
-					<Register onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange}/>
+					<Register onRouteChange={this.onRouteChange} onUserChange = {this.onUserChange} onSignIn = {this.onSignIn}/> 
 					:
 					<div className='main'>
 					<div className='btn-class pb7'>
@@ -49,7 +49,7 @@ class App extends Component {
 						<Button />
 					</div>
 					<div className='pt4' id='top100'>
-						<Movies />
+						{/*<Movies />*/}
 					</div>
 				</div>
 				}
