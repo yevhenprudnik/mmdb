@@ -24,8 +24,9 @@ const Movies = ({movies}) => {
         year = {movies[i].year}
         genre = {getStr(movies[i].genre)}
         topCast = {getStr(movies[i].topCast)}
-        short = {movies[i].short}
+        synopsis = {movies[i].synopsis}
         image = {movies[i].image}
+        trailer = {movies[i].trailer}
         // username = {movies[i].username}
         // email = {movies[i].email}
         // link = {movies[i].link}

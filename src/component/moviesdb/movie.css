@@ -5,17 +5,28 @@
 }
 .container{
     display: flex;
-	align-items: center;
 	justify-content: center;
+    padding: 1.5em;
 }
 .btn-grad {
-	font-size: 1em;
-	margin: 8px;
-	padding: 5px 20px;
-	text-align: center;
-	transition: 0.5s;
-    background-color: rgb(231, 76, 60);
-	color: rgb(255, 255, 255);
-	border-radius: 5px;
-	display: block;
+	background-color: rgb(231, 76, 60);
+    border: none;
+    border-radius: 3px;
+    padding: 0.3%;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    word-spacing: 0.3em;
+	letter-spacing: 0.1em;
+}
+.text3{
+    width: 60%;
+    position:absolute;
+    padding-right: 2em;
+    bottom:19%;                             
+}
+.pbb{
+    padding-bottom: 1em;
 }
