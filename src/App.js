@@ -10,20 +10,24 @@ const initialState = {
 	route: "home",
 	signedIn: false,
 	username: '',
-	movies: [{
+	movies: [
+		{
 		title: "Pirates of the Caribbean",
 		part: 3,
-		subTitle: "At World's End",
+		subtitle: "At World's End",
 		genre: ["Action", "Adventure", "Fantasy"],
 		IMDBraiting: 0,
 		stRaiting: 8.9,
 		adRaiting: 8.7,
 		year: 2007,
-		topCast: ["Johnny Depp", "Orlando Bloom", "Keira Knightley", "Geoffrey Rush", "Bill Nighy"],
+		short: "Captain Barbossa, Will Turner and Elizabeth Swann must sail off the edge of the map, navigate treachery and betrayal, find Jack Sparrow, and make their final alliances for one last decisive battle.",
+		topCast: ["Johnny Depp", "Orlando Bloom", "Keira Knightley"],
 		director: "Gore Verbinski",
 		Runtime: 167,
+		image:"https://cdn-products.eneba.com/resized-products/5228Fg1_350x200_1x-0.jpg",
 		company: ["friends", "family", "myself"],
-	}]
+	}
+]
 }
 class App extends Component {
 	constructor() {
