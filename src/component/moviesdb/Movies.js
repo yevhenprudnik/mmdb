@@ -5,9 +5,13 @@ const getStr  = (arr) =>{
     // arr.forEach(element => {
     //     str += element + ", "
     // });
-    for (let element of arr) {
-        str += element + ", ";
+    // for (let element of arr) {
+    //     str += element + ", ";
+    // }
+    for (let i = 0; i < arr.length-1; i++) {
+        str += arr[i] + ", "
     }
+    str+=arr[arr.length-1]
     return str;
 }
 const Movies = ({movies}) => {
