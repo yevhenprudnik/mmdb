@@ -1,33 +1,21 @@
-import React from 'react'
-
-const Movies = () => {
+import React from 'react';
+import Card from './Card';
+const Movies = ({movies}) => {
+    const cardComponent = movies.map((user, i) => {
+        return (<Card 
+        key = {i}
+        id = {movies[i]._id} 
+        title = {movies[i].title} 
+        // username = {movies[i].username}
+        // email = {movies[i].email}
+        // link = {movies[i].link}
+        // more = {movies[i].more}
+        />)
+    })
     return (
-        <div className=''>
-            <div className='tc bg-washed-blue dib br4 pa3 ma3 grow shadow-2 w-30'>
-            <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
-            <div>
-                <h2>Matrix</h2>
-                <h3>2</h3>
-                <p>2001</p>
-            </div>
-        </div>
-        <div className='tc bg-washed-blue dib br4 pa3 ma3 grow shadow-2 w-30'>
-            <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
-            <div>
-                <h2>Matrix</h2>
-                <h3>2</h3>
-                <p>2001</p>
-            </div>
-        </div>
-        <div className='tc bg-washed-blue dib br4 pa3 ma3 grow shadow-2 w-30'>
-            <img className = "photo br4" src="https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg    "/>
-            <div>
-                <h2>Matrix</h2>
-                <h3>2</h3>
-                <p>2001</p>
-            </div>
-        </div>
-        </div>
+    <div>
+        {cardComponent}
+    </div>
     );
 }
 export default Movies;

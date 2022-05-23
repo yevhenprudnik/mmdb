@@ -27,7 +27,7 @@ class Register extends React.Component {
 			.then(response => response.json())
 			.then(data => {
 				console.log(data)
-				if (data !== 'You are already registered, please sign in') {
+				if (data != "You are already registered, please sign in" && data != "error" && data != "") {
 					swal('Good job!', 'You did it))', 'success')
 					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
@@ -53,14 +53,12 @@ class Register extends React.Component {
 								<legend className='f1 fw4 ph0 mh0 text-space'>Register</legend>
 								<div className='mt3'>
 									<label className='db fw6 lh-copy f5 text-space' htmlFor='name'>
-										Name
+										Username
 									</label>
 									<input
 										onChange={this.onUsernameChange}
 										className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
 										type='text'
-										name='name'
-										id='name'
 									/>
 								</div>
 								<div className='mv3'>
@@ -74,8 +72,6 @@ class Register extends React.Component {
 										onChange={this.onPasswordChange}
 										className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
 										type='password'
-										name='password'
-										id='password'
 									/>
 								</div>
 							</fieldset>
