@@ -10,6 +10,20 @@ const initialState = {
 	route: "home",
 	signedIn: false,
 	username: '',
+	movies: [{
+		title: "Pirates of the Caribbean",
+		part: 3,
+		subTitle: "At World's End",
+		genre: ["Action", "Adventure", "Fantasy"],
+		IMDBraiting: 0,
+		stRaiting: 8.9,
+		adRaiting: 8.7,
+		year: 2007,
+		topCast: ["Johnny Depp", "Orlando Bloom", "Keira Knightley", "Geoffrey Rush", "Bill Nighy"],
+		director: "Gore Verbinski",
+		Runtime: 167,
+		company: ["friends", "family", "myself"],
+	}]
 }
 class App extends Component {
 	constructor() {
@@ -28,7 +42,18 @@ class App extends Component {
 	onSignIn = () => {
 		this.setState({signedIn: true})
 	}
+	componentDidMount(){
+		fetch('http://localhost:3001/getMovies', {
+			method: 'get',
+			headers: { 'Content-Type': 'application/json' }
+		})
+			.then(response => response.json())
+			.then(data => {
+				this.setState({movies: data})
+			})
+	}
 	render() {
+		//console.log(this.state.movies)
 		return (
 			<div className='App'>
 				<div className='navbar'>
@@ -49,7 +74,7 @@ class App extends Component {
 						<Button />
 					</div>
 					<div className='pt4' id='top100'>
-						{/*<Movies />*/}
+						<Movies movies = {this.state.movies} />
 					</div>
 				</div>
 				}

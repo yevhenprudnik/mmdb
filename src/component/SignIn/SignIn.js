@@ -27,7 +27,7 @@ class SignIn extends React.Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				if (data !== 'error') {
+				if (data != "error") {
 					//this.props.loadUser(data)
 					swal('Good job!', 'You signed in!', 'success')
 					this.props.onRouteChange('home')
@@ -50,22 +50,19 @@ class SignIn extends React.Component {
 								<div className='mt3'>
 									<label
 										className='db fw6 lh-copy f5 text-space'
-										htmlFor='email-address'
+										htmlFor='username'
 									>
-										Name
+										Username
 									</label>
 									<input
 										onChange={this.onUsernameChange}
 										className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-										type='email'
-										name='email-address'
-										id='email-address'
+										type='Username'
 									/>
 								</div>
 								<div className='mv3'>
 									<label
 										className='db fw6 lh-copy f5 text-space'
-										htmlFor='password'
 									>
 										Password
 									</label>
@@ -73,8 +70,6 @@ class SignIn extends React.Component {
 										onChange={this.onPasswordChange}
 										className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
 										type='password'
-										name='password'
-										id='password'
 									/>
 								</div>
 							</fieldset>
