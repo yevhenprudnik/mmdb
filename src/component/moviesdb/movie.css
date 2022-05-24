@@ -3,6 +3,9 @@
     width: 70%;
     text-align: left;
 }
+.photo{
+    width: 28vw;
+}
 .container{
     display: flex;
 	justify-content: center;
@@ -29,4 +32,12 @@
 }
 .pbb{
     padding-bottom: 1em;
+}
+.titleText{
+    font-size: 4vw;
+    text-shadow: 1px 1px 2px black, 0 0 1em white;
+    padding-bottom: 1em;
+}
+.dsText{
+    font-size: 1.4vw;
 }
