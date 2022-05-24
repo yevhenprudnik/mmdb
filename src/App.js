@@ -5,6 +5,7 @@ import Button from './component/Button/Button'
 import SignIn from './component/SignIn/SignIn'
 import Register from './component/Register/Register'
 import Movies from './component/moviesdb/Movies'
+import Picker from './component/picker/Picker'
 
 const initialState = {
 	route: "home",
@@ -77,6 +78,9 @@ class App extends Component {
 					<div className='btn-class pb7'>
 						<h2>This website will pick a movie for you</h2>
 						<Button />
+					</div>
+					<div className='pt4'>
+						<Picker/>
 					</div>
 					<div className='pt4' id='top100'>
 						<Movies movies = {this.state.movies} />
