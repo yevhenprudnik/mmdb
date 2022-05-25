@@ -1,11 +1,11 @@
 import React from 'react'
 import { Scrollchor } from 'react-scrollchor'
 import './Button.css'
-const Button = () => {
+const Button = ({onRouteChange}) => {
 	return (
 		<div className='center-btn'>
 			<Scrollchor
-				className='btn-center f3 btn-bn pointer pa2 grow'
+				className='center-btn scrollchor btn-bn pointer grow'
 				to='#top100'
 				animate={{ offset: -21, duration: 600 }}
 				href='#top100'
@@ -13,10 +13,8 @@ const Button = () => {
 				Top 100
 			</Scrollchor>
 			<Scrollchor
-				className='btn-center f3 btn-bn pointer pa2 grow'
-				to='#top100'
-				animate={{ offset: -21, duration: 600 }}
-				href='#top100'
+				className='center-btn btn-bn scrollchor pointer grow'
+				onClick={() => onRouteChange('generate')}
 			>
 				Generate
 			</Scrollchor>

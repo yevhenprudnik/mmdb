@@ -85,14 +85,16 @@ class App extends Component {
 						onUserChange={this.onUserChange}
 						onSignIn={this.onSignIn}
 					/>
-				) : (
+				) : this.state.route == 'generate' ? (
+				<div className='pt4'>
+					<Picker onRouteChange={this.onRouteChange} />
+				</div>)
+				:
+				(
 					<div className='main'>
 						<div className='btn-class pb7'>
-							<h2>This website will pick a movie for you</h2>
-							<Button />
-						</div>
-						<div className='pt4'>
-							<Picker onRouteChange={this.onRouteChange} />
+							<div className='MainText'>This website will pick a movie for you</div>
+							<Button onRouteChange = {this.onRouteChange}/>
 						</div>
 						<div className='pt4' id='top100'>
 							<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />

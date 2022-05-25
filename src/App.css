@@ -66,9 +66,9 @@
 h1 {
 	text-shadow: 1px 1px 2px black, 0 0 1em white;
 }
-h2 {
-	text-shadow: 1px 1px 2px black, 0 0 1em white;
-	font-size: 3em;
-	letter-spacing: 7px;
+.MainText {
+	text-shadow: 1px 1px 2px black, 0 0 10em white;
+	font-size: 3.5vw;
+	letter-spacing: 0.2em;
 	margin-bottom: 1%;
 }

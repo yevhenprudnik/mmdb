@@ -1,9 +1,9 @@
 .btn-bn {
 	color: white;
-	width: 300px;
+	width: 22vw;
+	font-size: 2vw;
 	border-radius: 5px;
 	background-color: rgba(0, 0, 0, 0.7);
-	margin-top: 10%;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
 .center-btn {
@@ -11,5 +11,8 @@
 	justify-content: center;
 	grid-auto-flow: column;
 	gap: 5%;
-	font-size: 14px;
+	font-size: 2vw;
+}
+.scrollchor{
+	padding: 2.5%;
 }

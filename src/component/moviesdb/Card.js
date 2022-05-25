@@ -57,8 +57,8 @@ class Card extends React.Component {
                                     value ={this.state.rating}
                                     />
                                 </div>
-                                <div className = "Rate pointer" onClick={this.rateFilm}>
-                                    <button className="btn-grad2 pointer">rate</button>
+                                <div className = "Rate pointer grow" onClick={this.rateFilm}>
+                                    <button className="btn-grad2 pointer">Rate</button>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ class Card extends React.Component {
                     </div>
                 </div>
                 <div className="pl4 pbb">
-                    <a href={trailer} target="_blank"><button className="w-10 btn-grad pointer tc dsText">Trailer</button></a>
+                    <a href={trailer} target="_blank"><button className="btn-grad pointer grow tc dsText">Trailer</button></a>
                 </div>
             </div>
         );
