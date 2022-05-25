@@ -6,18 +6,17 @@ import SignIn from './component/SignIn/SignIn'
 import Register from './component/Register/Register'
 import Movies from './component/moviesdb/Movies'
 import Picker from './component/picker/Picker'
-
 const initialState = {
 	route: "home",
 	signedIn: false,
 	username: '',
 	movies: [
 		{
-			title: "Hacksaw Ridge",
-			subtitle: "",
+			title: "Hacksaw Ridge ",
+			subtitle: "Just a simple subtitle",
 			genre: ["Drama", "War movie"],
-			IMDBraiting: 8.1,
-			Raiting: 0,
+			IMDBrating: 9.3,
+			Rating: 9.3,
 			year: 2016,
 			topCast: ["Andrew Garfield", "Sam Worthington", "Teresa Palmer"],
 			director: "Mel Gibson",
@@ -79,11 +78,13 @@ class App extends Component {
 						<h2>This website will pick a movie for you</h2>
 						<Button />
 					</div>
+					<div className=''>
+					</div>
 					<div className='pt4'>
 						<Picker/>
 					</div>
 					<div className='pt4' id='top100'>
-						<Movies movies = {this.state.movies} />
+						<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />
 					</div>
 				</div>
 				}
