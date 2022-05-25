@@ -1,4 +1,4 @@
-.btn {
+.btn-bn {
 	color: white;
 	width: 300px;
 	border-radius: 5px;
@@ -6,7 +6,7 @@
 	margin-top: 10%;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
-.center {
+.center-btn {
 	display: grid;
 	justify-content: center;
 	grid-auto-flow: column;
