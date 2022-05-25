@@ -14,7 +14,7 @@ const getStr  = (arr) =>{
     str+=arr[arr.length-1]
     return str;
 }
-const Movies = ({movies}) => {
+const Movies = ({movies, signedIn}) => {
     const cardComponent = movies.map((movie, i) => {
         return (<Card 
         key = {i}
@@ -27,6 +27,8 @@ const Movies = ({movies}) => {
         synopsis = {movies[i].synopsis}
         image = {movies[i].image}
         trailer = {movies[i].trailer}
+        Rating = {movies[i].Rating}
+        signedIn = {signedIn}
         // username = {movies[i].username}
         // email = {movies[i].email}
         // link = {movies[i].link}
