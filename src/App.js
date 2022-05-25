@@ -87,17 +87,17 @@ class App extends Component {
 					/>
 				) : (
 					<div className='main'>
-					<div className='btn-class pb7'>
-						<h2>This website will pick a movie for you</h2>
-						<Button />
-					</div>
-					<div className='pt4'>
-						<Picker onRouteChange={this.onRouteChange} />
-					</div>
-					<div className='pt4' id='top100'>
-						<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />
-					</div>
-				</div>
+						<div className='btn-class pb7'>
+							<h2>This website will pick a movie for you</h2>
+							<Button />
+						</div>
+						<div className='pt4'>
+							<Picker onRouteChange={this.onRouteChange} />
+						</div>
+						<div className='pt4' id='top100'>
+							<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />
+						</div>
+					</div>)
 				}
 			</div>
 		)
