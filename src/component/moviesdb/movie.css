@@ -11,6 +11,9 @@
 	justify-content: center;
 	padding: 1.5em;
 }
+.rateContainer{
+    display: flex;
+}
 .btn-grad {
 	background-color: rgb(231, 76, 60);
 	border: none;
@@ -24,20 +27,39 @@
 	word-spacing: 0.3em;
 	letter-spacing: 0.1em;
 }
-.text3 {
-	width: 60%;
-	position: absolute;
-	padding-right: 2em;
-	bottom: 19%;
+.btn-grad2 {
+	background-color: rgb(231, 76, 60);
+    border: none;
+    border-radius: 3px;
+    padding: 10%;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    word-spacing: 0.3em;
+	letter-spacing: 0.1em;
 }
-.pbb {
-	padding-bottom: 1em;
+.text3{
+    width: 60%;
+    position:absolute;
+    padding-right: 2em;
+    bottom:19%;                             
 }
-.titleText {
-	font-size: 4vw;
-	text-shadow: 1px 1px 2px black, 0 0 1em white;
-	padding-bottom: 1em;
+.Rate{
+    padding-left: 2%;
+    padding-top: 0.7%;
+    padding-right: 5%;
 }
-.dsText {
-	font-size: 1.4vw;
+.pbb{
+    padding-bottom: 1em;
+}
+.titleText{
+    font-size: 4vw;
+    text-shadow: 1px 1px 2px black, 0 0 1em white;
+    padding-bottom: 1%;
+}
+.subtitleText{
+    font-size: 2vw;
+    padding-bottom: 5%;
 }
