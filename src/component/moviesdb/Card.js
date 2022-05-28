@@ -2,6 +2,7 @@ import React from "react";
 import ReactStars from './react-stars'
 import "./movie.css";
 import swal from "sweetalert"
+import Swal from 'sweetalert2'
 class Card extends React.Component {
     constructor(props) {
 		super(props)
@@ -14,13 +15,28 @@ class Card extends React.Component {
             this.props.signedIn 
         ? 
             //console.log("ok")
-            fetch('http://localhost:3001/rateFilm', {
+            fetch('https://my-movie-d-base.herokuapp.com/rateFilm', {
                 method: 'put',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     movie: this.state.selectedMovie,
                     rate: this.state.rating
                 }),
+            })
+            .then(response => response.json())
+			.then(data => {
+                data == "ok" ?
+                Swal.fire({
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                :
+                swal(
+                    'Sign In or Register',
+                    'to Rate a movie',
+                    'error'
+                )
             })
         :
             swal(

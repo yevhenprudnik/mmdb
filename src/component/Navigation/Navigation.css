@@ -11,13 +11,12 @@ nav {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	min-height: 8vh;
 	background-color: rgba(0, 0, 0, 0.3);
 }
 .logo {
 	text-transform: uppercase;
-	letter-spacing: 5px;
-	font-size: 22px;
+	letter-spacing: 1vw;
+	font-size: 2vw;
 }
 .nav-links {
 	display: flex;
@@ -29,8 +28,8 @@ nav {
 }
 .nav-links a {
 	text-decoration: none;
-	letter-spacing: 3px;
-	font-size: 16px;
+	letter-spacing: 0.25vw;
+	font-size: 1vw;
 }
 
 @media screen and (max-width: 1024px) {
