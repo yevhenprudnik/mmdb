@@ -54,7 +54,7 @@ class App extends Component {
 		this.setState({ signedIn: true })
 	}
 	componentDidMount() {
-		fetch('http://localhost:3001/getMovies', {
+		fetch('https://my-movie-d-base.herokuapp.com/getMovies', {
 			method: 'get',
 			headers: { 'Content-Type': 'application/json' },
 		})
@@ -87,7 +87,7 @@ class App extends Component {
 					/>
 				) : this.state.route == 'generate' ? (
 				<div className='pt4'>
-					<Picker onRouteChange={this.onRouteChange} />
+					<Picker onRouteChange={this.onRouteChange} movies = {this.state.movies} signedIn = {this.state.signedIn}/>
 				</div>)
 				:
 				(

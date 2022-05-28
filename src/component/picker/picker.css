@@ -8,7 +8,6 @@
 	width: 7vw;
 	border-radius: 5px;
 	background-color: rgb(231, 76, 60, 7);
-	margin-top: 10%;
 	font-size: 1.5vw;
 	border: none;
 }
@@ -16,10 +15,72 @@
 	display: grid;
 	justify-content: center;
 	grid-auto-flow: column;
-	gap: 75%;
-	font-size: 14px;
+	gap: 70%;
+}
+.center2 {
+	display: grid;
+	justify-content: center;
+	grid-auto-flow: column;
+	gap: 32%;
 }
 .vertical{
-	padding: 18% 0;
+	padding: 10% 0;
 	text-align: center;
+}
+.icon {
+	padding: 3%;
+	width: 20vw;
+	border-radius: 10%;
+}
+.subtitleText2{
+    font-size: 2.5vw;
+}
+.selected{
+	border: 0.3vw solid white;
+	border-radius: 7%;
+}
+.subtitleText3{
+	padding: 2%;
+	padding-left: 8%;
+    font-size: 1.5vw;
+	text-align: left;
+}
+.subtitleText4{
+	padding: 0.8%;
+    font-size: 1.5vw;
+	text-align: left;
+}
+.subtitleText5{
+    font-size: 1.5vw;
+}
+.topOcc{
+	padding-top: 3%;
+}
+.bottomOcc{
+	padding-bottom: 3.5%;
+}
+.bottomOccc{
+	padding-bottom: 5%;
+}
+.selectedText{
+	padding: 2%;
+	border: 0.3vw solid white;
+	border-radius: 10px;
+}
+.container2 {
+	padding-left: 7vw;
+	display: flex;
+    gap: 7%;
+}
+.container3 {
+	padding-bottom: 2%;
+	display: flex;
+    gap: 7%;
+}
+.pll1{
+	padding-left: 1000%;
+}
+.none{
+	color: transparent;
+	background-color: transparent;
 }

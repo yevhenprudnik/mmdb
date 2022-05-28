@@ -41,6 +41,7 @@
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0.5);
 	position: fixed;
+	height: 4vw;
 	top: 0;
 	width: 100%;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 1);
@@ -51,7 +52,7 @@
 	display: block;
 	color: #f2f2f2;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 1vw 1.2vw;
 	text-decoration: none;
 }
 .main {

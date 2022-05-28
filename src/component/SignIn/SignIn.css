@@ -7,3 +7,7 @@
 .txts {
 	font-style: normal;
 }
+.my-swal {
+	background: rgba(255,255,255,0);
+	backdrop-filter: blur(2px);
+}

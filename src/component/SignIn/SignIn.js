@@ -1,6 +1,7 @@
 import React from 'react'
 import swal from 'sweetalert'
 import './SignIn.css'
+import Swal from 'sweetalert2'
 class SignIn extends React.Component {
 	constructor(props) {
 		super(props)
@@ -17,7 +18,7 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		fetch('http://localhost:3001/signIn', {
+		fetch('https://my-movie-d-base.herokuapp.com/signIn', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -29,7 +30,13 @@ class SignIn extends React.Component {
 			.then(data => {
 				if (data != "error") {
 					//this.props.loadUser(data)
-					swal('Good job!', 'You signed in!', 'success')
+					Swal.fire({
+						icon: 'success',
+						title: 'You signed in',
+						customClass: {
+						popup: 'my-swal',
+						},
+					})
 					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
 					this.props.onSignIn()
@@ -39,7 +46,6 @@ class SignIn extends React.Component {
 			})
 	}
 	render() {
-		const { onRouteChange } = this.props
 		return (
 			<div className='cont'>
 				<article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5'>
