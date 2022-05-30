@@ -3,11 +3,11 @@ import { Scrollchor } from 'react-scrollchor'
 import './Button.css'
 const Button = ({onRouteChange}) => {
 	return (
-		<div className='center-btn'>
+		<div className='center-btn' >
 			<Scrollchor
 				className='center-btn scrollchor btn-bn pointer grow'
 				to='#top100'
-				animate={{ offset: -21, duration: 600 }}
+				animate={{ offset: 190, duration: 600 }}
 				href='#top100'
 			>
 				Top 100

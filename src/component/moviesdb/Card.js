@@ -15,8 +15,8 @@ class Card extends React.Component {
             this.props.signedIn 
         ? 
             //console.log("ok")
-            fetch('https://my-movie-d-base.herokuapp.com/rateFilm', {
-                method: 'put',
+            fetch('http://localhost:3001/rateFilm', {
+                method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     movie: this.state.selectedMovie,
@@ -54,8 +54,8 @@ class Card extends React.Component {
     render() {
         const {title, subtitle, year, genre, topCast, synopsis, image, trailer} = this.props
         return(
-            <div className="dib br2 pa3 ma3 grow shadow-5 cardComponent" onMouseEnter={() => this.setState({selectedMovie : title})}>
-                <div className="container" onMouseEnter={() => console.log(this.state.rating)}>
+            <div className="dib br3 pa3 ma3 grow shadow-5 cardComponent" onMouseEnter={() => this.setState({selectedMovie : title})}>
+                <div className="container">
                     <div className = "pr4 photo">
                         <img className = "br4" src={image}/>
                     </div>

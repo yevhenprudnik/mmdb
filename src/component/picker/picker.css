@@ -84,3 +84,20 @@
 	color: transparent;
 	background-color: transparent;
 }
+.titleText2{
+	text-shadow: 1px 1px 2px black, 0 0 1em white;
+	font-size: 3.5vw;
+	letter-spacing: 0.2em;
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+
+.cardComponent11 {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 70%;
+	box-shadow: 1px 1px 2px black, 0 0 1em white;
+	border-radius: 20px;
+}
+.cardComponent112 {
+	padding-bottom: 2vw;
+}
