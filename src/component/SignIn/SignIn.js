@@ -2,6 +2,7 @@ import React from 'react'
 import swal from 'sweetalert'
 import './SignIn.css'
 import Swal from 'sweetalert2'
+import Axios from "axios";
 class SignIn extends React.Component {
 	constructor(props) {
 		super(props)
@@ -18,17 +19,13 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		fetch('https://my-movie-d-base.herokuapp.com/signIn', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
-			}),
+		Axios.defaults.withCredentials = true;
+		Axios.post("https://my-movie-d-base.herokuapp.com/signIn", {
+			username: this.state.username,
+			password: this.state.password,
 		})
-			.then(response => response.json())
-			.then(data => {
-				if (data != "error") {
+			.then(response => {
+				if (response.data != "error") {
 					//this.props.loadUser(data)
 					Swal.fire({
 						icon: 'success',

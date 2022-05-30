@@ -38,7 +38,6 @@ class Picker extends React.Component {
 			})
 	}
 	render() {
-		console.log(this.state)
 		return this.state.questions == 1 ? (
 			<div className='vertical'>
 				<div className='dib br2 pa3 ma3 shadow-5 cardComponent1'>
@@ -571,6 +570,11 @@ class Picker extends React.Component {
 			</div>
 		) : 
 		<div className='vertical'>
+				<div className='cardComponent112'>
+					<div className='cardComponent11 center'>
+						<div className='titleText2 '>Recommended for you:</div>
+					</div>
+				</div>
 				<Movies movies = {this.state.movies} signedIn = {this.props.signedIn} />
 		</div>
 	}
