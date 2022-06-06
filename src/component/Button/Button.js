@@ -1,9 +1,9 @@
 import React from 'react'
 import { Scrollchor } from 'react-scrollchor'
 import './Button.css'
-const Button = ({onRouteChange}) => {
+const Button = ({onRouteChange, getMovies}) => {
 	return (
-		<div className='center-btn' >
+		<div className='center-btn' onMouseEnter={() => getMovies()}>
 			<Scrollchor
 				className='center-btn scrollchor btn-bn pointer grow'
 				to='#top100'

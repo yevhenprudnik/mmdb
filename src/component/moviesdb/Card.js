@@ -12,19 +12,20 @@ class Card extends React.Component {
 		}
 	}
     rateFilm = () => {
-            this.props.signedIn 
+            this.props.signedIn == true
         ? 
-            //console.log("ok")
-            fetch('http://localhost:3001/rateFilm', {
+            fetch('https://my-movie-d-base.herokuapp.com/rateFilm', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                    id : localStorage.getItem('id'),
                     movie: this.state.selectedMovie,
                     rate: this.state.rating
                 }),
             })
             .then(response => response.json())
 			.then(data => {
+                console.log(data)
                 data == "ok" ?
                 Swal.fire({
                     icon: 'success',
@@ -41,7 +42,7 @@ class Card extends React.Component {
         :
             swal(
                 'Sign In or Register',
-                'to Rate a movie',
+                'to rate a movie',
                 'error'
             )
     }
@@ -79,13 +80,13 @@ class Card extends React.Component {
                             </div>
                         </div>
                         <div className="text3 dsText">
-                            <div className="pb2">
+                            <div className="pbb2">
                                 <div>{genre}</div>
                             </div>
                             <div className="mb2">
                                 <div>{year}</div>
                             </div>
-                            <div className="pb2 text2">
+                            <div className="pbb2 text2">
                                 <div>{synopsis}</div>
                             </div>
                             <div className="dsText">
@@ -95,7 +96,9 @@ class Card extends React.Component {
                     </div>
                 </div>
                 <div className="pl4 pbb">
-                    <a href={trailer} target="_blank"><button className="btn-grad pointer grow tc dsText">Trailer</button></a>
+                    <a href={trailer} target="_blank" className="pb2 pt4 pl2 pr5">
+                        <button className="btn-grad pointer grow tc dsText">Trailer</button>
+                    </a>
                 </div>
             </div>
         );

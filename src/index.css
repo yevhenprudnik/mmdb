@@ -1,8 +1,10 @@
+/* only screen and */
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-image: url(./component/bg.jpg);
@@ -15,10 +17,17 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-color: black;
 	color: rgb(0, 0, 0);
 	height: 100vh;
 }
 
+@media (max-width:1300px) and (orientation: portrait) { 
+	body { 
+		background-image: url("https://i.ibb.co/GHHRT2Y/opt-min-2-bl-min.png");
+		background-color: rgb(0, 0, 0); 
+	} 
+}
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;

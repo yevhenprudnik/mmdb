@@ -10,29 +10,39 @@ class Register extends React.Component {
 		}
 	}
 	onUsernameChange = event => {
-		this.setState({ name: event.target.value })
+		this.setState({ username: event.target.value })
 	}
 	onPasswordChange = event => {
 		this.setState({ password: event.target.value })
 	}
 	onSubmitRegister = () => {
+		if (this.state.username && this.state.password) {
 		fetch('https://my-movie-d-base.herokuapp.com/register', {
 			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json',
+						'Accept': 'application/json'
+			},
 			body: JSON.stringify({
 				password: this.state.password,
-				username: this.state.name,
+				username: this.state.username,
 			}),
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log(data)
 				if (data != "You are already registered, please sign in" && data != "error" && data != "") {
 					swal('Good job!', 'You did it))', 'success')
-					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
 					this.props.onSignIn()
-				} else {
+					localStorage.setItem('id' , data)
+					this.props.onRouteChange('home')
+				} else if (data == "You are already registered, please sign in") {
+					swal(
+						'You are already registered',
+						'Please sign in',
+						'error'
+					)
+				} 
+				else {
 					swal(
 						'Something wrong',
 						'Please try to deal with this error by yourself',
@@ -40,52 +50,49 @@ class Register extends React.Component {
 					)
 				}
 			})
+		}
+		else {
+			swal('Oops', 'Wrong username or password!', 'error')
+		}
 	}
 
 	render() {
-		const { onRouteChange, onUserChange } = this.props
 		return (
 			<div className='cont'>
-				<article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5'>
-					<main className='pa4 black-80'>
-						<form className='measure'>
-							<fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-								<legend className='f1 fw4 ph0 mh0 text-space'>Register</legend>
-								<div className='mt3'>
-									<label className='db fw6 lh-copy f5 text-space' htmlFor='name'>
-										Username
-									</label>
-									<input
-										onChange={this.onUsernameChange}
-										className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-										type='text'
-									/>
-								</div>
-								<div className='mv3'>
-									<label
-										className='db fw6 lh-copy f5 text-space'
-										htmlFor='password'
-									>
-										Password
-									</label>
-									<input
-										onChange={this.onPasswordChange}
-										className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-										type='password'
-									/>
-								</div>
-							</fieldset>
-							<div className=''>
-								<input
-									onClick={this.onSubmitRegister}
-									className='b ph3 pv2 input-reset ba b--white bg-transparent grow pointer f4 dib'
-									type='submit'
-									value='Register'
-								/>
-							</div>
-						</form>
-					</main>
-				</article>
+				<div className='titleTextN'>Register</div>
+					<div className='mt3'>
+						<div
+							className='db fw6 lh-copy f5 text-space'
+							htmlFor='username'
+						>
+							Username
+						</div>
+						<input
+							onChange={this.onUsernameChange}
+							className='pa2 input-reset input-reset1 ba bg-transparent hover-bg-black hover-white'
+							type='Username'
+						/>
+					</div>
+					<div className='mv3'>
+						<div
+							className='db fw6 lh-copy f5 text-space'
+						>
+							Password
+						</div>
+						<input
+							onChange={this.onPasswordChange}
+							className='b pa2 input-reset input-reset1 ba bg-transparent hover-bg-black hover-white w-100'
+							type='password'
+						/>
+					</div>
+				<div className='container center'>
+					<div className=''>
+						<button
+							onClick={this.onSubmitRegister}
+							className='b ph3 pv2 input-reset ba b--white bg-transparent grow pointer f4 dib'
+						>Register</button>
+					</div>
+				</div>
 			</div>
 		)
 	}

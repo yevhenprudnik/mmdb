@@ -6,32 +6,13 @@ import SignIn from './component/SignIn/SignIn'
 import Register from './component/Register/Register'
 import Movies from './component/moviesdb/Movies'
 import Picker from './component/picker/Picker'
-import Axios from "axios";
 
 const initialState = {
 	refresh: false,
 	route: 'home',
 	signedIn: false,
 	username: '',
-	movies: [
-		{
-			title: "The Shawshank Redemption",
-			subtitle: "",
-			genre: ["Drama"],
-			IMDBraiting: 9.3,
-			Rating: 9.3,
-			year: 1994,
-			topCast: ["Tim Robbins", "Morgan Freeman"],
-			director: "Frank Darabont",
-			Runtime: 144,
-			image:"https://live.staticflickr.com/65535/52095383531_7e6079fc6c_b.jpg",
-			trailer: "https://youtu.be/NmzuHjWmXOc",
-			synopsis: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-			company: ["alone", "family"],
-			mood: ["sad", "happy", "neutral"],
-			category: ["Movies that may change the way you look at life", "Movie based on a book"],
-		}
-	],
+	movies: [],
 }
 class App extends Component {
 	constructor() {
@@ -40,10 +21,7 @@ class App extends Component {
 	}
 	onRouteChange = route => {
 		if (route === 'signOut') {
-			// fetch('https://my-movie-d-base.herokuapp.com/signOut',{
-			// 	method: 'post',
-			// 	headers: { 'Content-Type': 'application/json' },
-			// })
+			localStorage.removeItem('id')
 			this.setState(initialState)
 		}
 		this.setState({ route: route })
@@ -64,19 +42,25 @@ class App extends Component {
 				this.setState({ movies: data })
 			})
 	}
-	// IsSignedIn(e){
-	// 	Axios.defaults.withCredentials = true;
-	// 	if (!e) {
-	// 		this.setState({ refresh: true })
-	// 		Axios.get("https://my-movie-d-base.herokuapp.com/login").then((response) => {
-	// 			if (response.data.loggedIn == true) {
-	// 				this.setState({signedIn: true})
-	// 			}
-	// 		});
-	// 	}
-	// }
+	IsSignedIn(e){
+		if (!e) {
+			this.setState({ refresh: true })
+			let id = localStorage.getItem('id')
+			if (id) {
+				this.setState({ signedIn: true })
+			}
+		};
+	}
+	componentDidUpdate(prevProps, prevState){
+		if (prevState.signedIn !== this.state.signedIn) {
+			this.IsSignedIn(false)
+		}
+		if (this.state.movies.length == 1) {
+			this.getMovies();
+		}
+	}
 	componentDidMount() {
-		// this.IsSignedIn(false)
+		this.IsSignedIn(false)
 		this.getMovies()
 	}
 
@@ -115,7 +99,13 @@ class App extends Component {
 							<Button onRouteChange = {this.onRouteChange} getMovies = {this.getMovies}/>
 						</div>
 						<div className='pt7' id='top100'>
-							<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />
+							{
+								this.state.movies.length == 0 
+								?
+								<div className='loading'>Loading...</div>
+								:
+								<Movies movies = {this.state.movies} signedIn = {this.state.signedIn} />
+							}
 						</div>
 					</div>)
 				}

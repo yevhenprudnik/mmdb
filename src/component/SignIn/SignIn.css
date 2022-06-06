@@ -1,4 +1,5 @@
 .cont {
+	padding-top: 2vw;
 	margin-top: 5%;
 }
 .text-space {
@@ -10,4 +11,11 @@
 .my-swal {
 	background: rgba(255,255,255,0);
 	backdrop-filter: blur(2px);
+}
+.input-reset1{
+	width: 27vw;
+}
+.titleTextN{
+    font-size: 4vw;
+    padding-bottom: 1%;
 }

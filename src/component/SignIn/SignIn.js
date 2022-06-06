@@ -19,13 +19,20 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		Axios.defaults.withCredentials = true;
-		Axios.post("https://my-movie-d-base.herokuapp.com/signIn", {
-			username: this.state.username,
-			password: this.state.password,
+		if (this.state.username && this.state.password) {
+		fetch('https://my-movie-d-base.herokuapp.com/signIn', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json',
+						'Accept': 'application/json'
+			},
+			body: JSON.stringify({
+				password: this.state.password,
+				username: this.state.username,
+			}),
 		})
-			.then(response => {
-				if (response.data != "error") {
+		.then(response => response.json())
+		.then(data => {
+				if (data != "error") {
 					//this.props.loadUser(data)
 					Swal.fire({
 						icon: 'success',
@@ -34,61 +41,56 @@ class SignIn extends React.Component {
 						popup: 'my-swal',
 						},
 					})
-					this.props.onRouteChange('home')
 					this.props.onUserChange(this.state.username)
 					this.props.onSignIn()
+					localStorage.setItem('id' , data._id)
+					this.props.onRouteChange('home')
 				} else {
-					swal('Oops', 'Wrong email or password!', 'error')
+					swal('Oops', 'Wrong username or password!', 'error')
 				}
 			})
+		}
+		else {
+			swal('Oops', 'Wrong username or password!', 'error')
+		}
 	}
 	render() {
 		return (
 			<div className='cont'>
-				<article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5'>
-					<main className='pa4 black-80'>
-						<form className='measure'>
-							<fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-								<legend className='f1 fw4 ph0 mh0 text-space'>Sign In</legend>
-								<div className='mt3'>
-									<label
-										className='db fw6 lh-copy f5 text-space'
-										htmlFor='username'
-									>
-										Username
-									</label>
-									<input
-										onChange={this.onUsernameChange}
-										className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-										type='Username'
-									/>
-								</div>
-								<div className='mv3'>
-									<label
-										className='db fw6 lh-copy f5 text-space'
-									>
-										Password
-									</label>
-									<input
-										onChange={this.onPasswordChange}
-										className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-										type='password'
-									/>
-								</div>
-							</fieldset>
-							<div className='container center'>
-								<div className=''>
-									<input
-										onClick={this.onSubmitSignIn}
-										className='b ph3 pv2 input-reset ba b--white bg-transparent grow pointer f4 dib'
-										type='submit'
-										value='Sign in'
-									/>
-								</div>
-							</div>
-						</form>
-					</main>
-				</article>
+				<div className='titleTextN'>Sign In</div>
+					<div className='mt3'>
+						<div
+							className='db fw6 lh-copy f5 text-space'
+							htmlFor='username'
+						>
+							Username
+						</div>
+						<input
+							onChange={this.onUsernameChange}
+							className='pa2 input-reset input-reset1 ba bg-transparent hover-bg-black hover-white'
+							type='Username'
+						/>
+					</div>
+					<div className='mv3'>
+						<div
+							className='db fw6 lh-copy f5 text-space'
+						>
+							Password
+						</div>
+						<input
+							onChange={this.onPasswordChange}
+							className='b pa2 input-reset input-reset1 ba bg-transparent hover-bg-black hover-white w-100'
+							type='password'
+						/>
+					</div>
+				<div className='container center'>
+					<div className=''>
+						<button
+							onClick={this.onSubmitSignIn}
+							className='b ph3 pv2 input-reset ba b--white bg-transparent grow pointer f4 dib'
+						>Sign In</button>
+					</div>
+				</div>
 			</div>
 		)
 	}
