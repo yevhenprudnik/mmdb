@@ -8,11 +8,12 @@ import Movies from '../moviesdb/Movies'
 const initialState = {
 	questions: 1,
 	mood: '',
-	occasion: '',
-	types: new Set(),
+	company: '',
+	category: new Set(),
 	genres: new Set(),
 	year: new Date().getFullYear(),
-	movies: []
+	movies: [],
+	runtime: 0
 }
 class Picker extends React.Component {
 	constructor(props) {
@@ -23,13 +24,16 @@ class Picker extends React.Component {
 		this.setState({ questions: "res"})
 		fetch('https://my-movie-d-base.herokuapp.com/getRecommendations', {
 			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json',
+						'Accept': 'application/json'
+			},
 			body: JSON.stringify({
 				genres: Array.from(this.state.genres),
-				types: Array.from(this.state.types),
-				occasion: this.state.occasion,
+				category: Array.from(this.state.category),
+				company: this.state.company,
 				mood: this.state.mood,
-				year: this.state.year
+				year: this.state.year, 
+				runtime: this.state.runtime
 			}),
 		})
 			.then(response => response.json())
@@ -106,33 +110,33 @@ class Picker extends React.Component {
 				</div>
 				<div className='subtitleText3 topOcc grow pointer'>
 					<div className={classNames('pa2',{
-										'selectedText': this.state.occasion == 'alone'
+										'selectedText': this.state.company == 'alone'
 									})}
-									onClick={() => this.setState({ occasion : "alone"})}>
+									onClick={() => this.setState({ company : "alone"})}>
 						Just watching a movie by myself
 					</div>
 				</div>
 				<div className='subtitleText3 grow pointer'>
 					<div className={classNames('pa2',{
-										'selectedText': this.state.occasion == 'date'
+										'selectedText': this.state.company == 'friends'
 									})}
-									onClick={() => this.setState({ occasion : "date"})}>
-						Movie Date
+									onClick={() => this.setState({ company : "friends"})}>
+						Watching a movie with friends
 					</div>
 				</div>
 				<div className='subtitleText3 grow pointer'>
 					<div className={classNames('pa2',{
-										'selectedText': this.state.occasion == 'friends'
+										'selectedText': this.state.company == 'date'
 									})}
-									onClick={() => this.setState({ occasion : "friends"})}>
-						Watching a movie with friends
+									onClick={() => this.setState({ company : "date"})}>
+						Movie Date
 					</div>
 				</div>
 				<div className='subtitleText3 bottomOcc grow pointer'>
 					<div className={classNames('pa2',{
-										'selectedText': this.state.occasion == 'family'
+										'selectedText': this.state.company == 'family'
 									})}
-									onClick={() => this.setState({occasion : "family"})}>
+									onClick={() => this.setState({company : "family"})}>
 						Watching a movie with family
 					</div>
 				</div>
@@ -149,7 +153,7 @@ class Picker extends React.Component {
 								</button>
 							</a>
 							{
-								this.state.occasion != '' ?
+								this.state.company != '' ?
 								<a href='#'>
 								<button
 									className='btn grow pointer tc'
@@ -175,45 +179,45 @@ class Picker extends React.Component {
 				<div className='subtitleText2'>
 					What kinds of movies do you like?
 				</div>
-				<div className='container2 topOcc'>
+					<div className='container2 topOcc'>
 						<div className='subtitleText4 grow pointer w-50'>
-						<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Documentary film')
-										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Documentary film')
-										}))}>
-							Documentary film
-						</div>
-						</div>
-						<div className='subtitleText4 grow pointer w-40'>
 							<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Epic movie')
+											'selectedText': this.state.category.has('Epic movie')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Epic movie')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Epic movie')
 										}))}>
 								Epic movie
 							</div>
 						</div>
-				</div>
+						<div className='subtitleText4 grow pointer w-40'>
+							<div className={classNames('pb1',{
+												'selectedText': this.state.category.has('Dark comedy')
+											})}
+											onClick = {() => this.setState(({ category }) => ({
+												category: new Set(category).add('Dark comedy')
+											}))}>
+								Dark comedy
+							</div>
+						</div>
+					</div>
 				<div className='container2'>
 						<div className='subtitleText4 grow pointer w-50'>
 						<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Movie based on a book')
+											'selectedText': this.state.category.has('Movie based on a book')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Movie based on a book')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Movie based on a book')
 										}))}>
 							Movie based on a book
 						</div>
 						</div>
 						<div className='subtitleText4 grow pointer w-40'>
 							<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Space Movie')
+											'selectedText': this.state.category.has('Space Movie')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Space Movie')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Space Movie')
 										}))}>
 								Space Movie
 							</div>
@@ -222,20 +226,20 @@ class Picker extends React.Component {
 				<div className='container2'>
 						<div className='subtitleText4 grow pointer w-50'>
 						<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Movies that may change the way you look at life')
+											'selectedText': this.state.category.has('Movies that may change the way you look at life')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Movies that may change the way you look at life')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Movies that may change the way you look at life')
 										}))}>
 							Movies that may change the way you look at life
 						</div>
 						</div>
 						<div className='subtitleText4 grow pointer w-40'>
 							<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Love story')
+											'selectedText': this.state.category.has('Love story')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Love story')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Love story')
 										}))}>
 								Love story
 							</div>
@@ -244,46 +248,58 @@ class Picker extends React.Component {
 				<div className='container2'>
 						<div className='subtitleText4 grow pointer w-50'>
 						<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Movies based on a true story')
+											'selectedText': this.state.category.has('Movies based on a true story')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Movies based on a true story')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Movies based on a true story')
 										}))}>
 							Movies based on a true story
 						</div>
 						</div>
 						<div className='subtitleText4 grow pointer w-40'>
 							<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Superhero movie')
+											'selectedText': this.state.category.has('Superhero movie')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Superhero movie')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Superhero movie')
 										}))}>
 								Superhero movie
 							</div>
 						</div>
 				</div>
-				<div className='container2 bottomOcc'>
+				<div className='container2'>
 						<div className='subtitleText4 grow pointer w-50'>
 						<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('War movie')
+											'selectedText': this.state.category.has('War movie')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('War movie')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('War movie')
 										}))}>
 							War movie
 						</div>
 						</div>
 						<div className='subtitleText4 grow pointer w-40'>
 							<div className={classNames('pb1',{
-											'selectedText': this.state.types.has('Psychological movie')
+											'selectedText': this.state.category.has('Psychological movie')
 										})}
-										onClick = {() => this.setState(({ types }) => ({
-											types: new Set(types).add('Psychological movie')
+										onClick = {() => this.setState(({ category }) => ({
+											category: new Set(category).add('Psychological movie')
 										}))}>
 								Psychological movie
 							</div>
 						</div>
+				</div>
+				<div className='w-100'>
+					<div className='grow pointer w-40 center Text4 tc bottomOcc'>
+						<div className={classNames('pb1',{
+										'selectedText': this.state.category.has('I dont have preference')
+									})}
+									onClick = {() => this.setState({
+										category: new Set().add('I dont have preference')
+									})}>
+							I don't have preference
+						</div>
+					</div>
 				</div>
 					<div className='pb3'>
 						<div className='center2	'>
@@ -300,13 +316,13 @@ class Picker extends React.Component {
 							<a href='#'>
 								<button
 									className='btn grow pointer tc'
-									onClick={() => {this.setState({types : new Set()})}}
+									onClick={() => {this.setState({category : new Set()})}}
 								>
 									Clear
 								</button>
 							</a>
 							{
-								this.state.types.size != 0 ?
+								this.state.category.size != 0 ?
 								<a href='#'>
 								<button
 									className='btn grow pointer tc'
@@ -356,23 +372,13 @@ class Picker extends React.Component {
 						</div>
 						<div className='subtitleText5 grow pointer w-40'>
 						<div className={classNames('pb1',{
-											'selectedText': this.state.genres.has('Adventure')
+											'selectedText': this.state.genres.has('Animation')
 										})}
 										onClick = {() => this.setState(({ genres }) => ({
-											genres: new Set(genres).add('Adventure')
+											genres: new Set(genres).add('Animation')
 										}))}>
-							Adventure
+							Animation
 						</div>
-						</div>
-						<div className='subtitleText5 grow pointer w-40'>
-							<div className={classNames('pb1',{
-											'selectedText': this.state.genres.has('Sci-Fi')
-										})}
-										onClick = {() => this.setState(({ genres }) => ({
-											genres: new Set(genres).add('Sci-Fi')
-										}))}>
-								Sci-Fi
-							</div>
 						</div>
 				</div>
 				<div className='container3'>
@@ -406,16 +412,38 @@ class Picker extends React.Component {
 							Romance
 						</div>
 						</div>
-						<div className='subtitleText5 grow pointer w-40'>
-							<div className={classNames('pb1',{
-											'selectedText': this.state.genres.has('Animation')
-										})}
-										onClick = {() => this.setState(({ genres }) => ({
-											genres: new Set(genres).add('Animation')
-										}))}>
-								Animation
-							</div>
+				</div>
+				<div className='container3'>
+					<div className='subtitleText5 grow pointer w-40'>
+						<div className={classNames('pb1',{
+										'selectedText': this.state.genres.has('Sci-Fi')
+									})}
+									onClick = {() => this.setState(({ genres }) => ({
+										genres: new Set(genres).add('Sci-Fi')
+									}))}>
+							Sci-Fi
 						</div>
+					</div>
+					<div className='subtitleText5 grow pointer w-40'>
+						<div className={classNames('pb1',{
+										'selectedText': this.state.genres.has('Adventure')
+									})}
+									onClick = {() => this.setState(({ genres }) => ({
+										genres: new Set(genres).add('Adventure')
+									}))}>
+							Adventure
+						</div>
+					</div>
+					<div className='subtitleText5 grow pointer w-40'>
+						<div className={classNames('pb1',{
+										'selectedText': this.state.genres.has('Action')
+									})}
+									onClick = {() => this.setState(({ genres }) => ({
+										genres: new Set(genres).add('Action')
+									}))}>
+							Action
+						</div>
+					</div>							
 				</div>
 				<div className='container3 bottomOccc'>
 						<div className='subtitleText5 grow pointer w-40'>
@@ -448,16 +476,18 @@ class Picker extends React.Component {
 							Fantasy
 						</div>
 						</div>
-						<div className='subtitleText5 grow pointer w-40'>
-							<div className={classNames('pb1',{
-											'selectedText': this.state.genres.has('Action')
-										})}
-										onClick = {() => this.setState(({ genres }) => ({
-											genres: new Set(genres).add('Action')
-										}))}>
-								Action
-							</div>
+				</div>
+				<div className='w-100'>
+					<div className='grow pointer w-40 center Text4 tc bottomOcc'>
+						<div className={classNames('pb1',{
+										'selectedText': this.state.genres.has('I dont have preference')
+									})}
+									onClick = {() => this.setState({
+										genres: new Set().add('I dont have preference')
+									})}>
+							I don't have preference
 						</div>
+					</div>
 				</div>
 					<div className=''>
 						<div className='center2'>
@@ -554,6 +584,74 @@ class Picker extends React.Component {
 								<a href='#'>
 								<button
 									className='btn grow pointer tc'
+									onClick={() => {this.setState({ questions: 6 })}}
+								>
+									Next
+								</button>
+							</a>
+							:
+							<button className='btn grow pointer tc none'>
+									Next
+							</button>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		) : this.state.questions == 6 ? (
+			<div className='vertical'>
+				<div className='dib br2 pa3 ma3 shadow-5 cardComponent1'>
+					<div className='subtitleText2'>
+						How long would you like the movie to be?
+					</div>
+					<div className='subtitleText3 topOcc grow pointer'>
+					<div className={classNames('pa2',{
+										'selectedText': this.state.runtime == 300
+									})}
+									onClick={() => this.setState({ runtime : 300})}>
+						Doesn't matter
+					</div>
+				</div>
+				<div className='subtitleText3 grow pointer'>
+					<div className={classNames('pa2',{
+										'selectedText': this.state.runtime == 180
+									})}
+									onClick={() => this.setState({ runtime : 180})}>
+						Less than 3 hours
+					</div>
+				</div>
+				<div className='subtitleText3 grow pointer'>
+					<div className={classNames('pa2',{
+										'selectedText': this.state.runtime == 120
+									})}
+									onClick={() => this.setState({ runtime : 120})}>
+						Less than 2 hours
+					</div>
+				</div>
+				<div className='subtitleText3 bottomOcc grow pointer'>
+					<div className={classNames('pa2',{
+										'selectedText': this.state.runtime == 90
+									})}
+									onClick={() => this.setState({ runtime : 90})}>
+						Less than 1 hour and 30 minutes
+					</div>
+				</div>
+					<div className='pb3'>
+						<div className='center'>
+							<a href='#'>
+								<button
+									className='btn grow pointer tc'
+									onClick={() => {
+										this.setState({ questions: 5 })
+									}}>
+									Previous
+								</button>
+							</a>
+							{
+								this.state.year != new Date().getFullYear() ?
+								<a href='#'>
+								<button
+									className='btn grow pointer tc'
 									onClick={this.getRecommendations}
 								>
 									Results
@@ -568,7 +666,7 @@ class Picker extends React.Component {
 					</div>
 				</div>
 			</div>
-		) : 
+		) :
 		<div className='vertical'>
 				<div className='cardComponent112'>
 					<div className='cardComponent11 center'>

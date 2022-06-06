@@ -54,7 +54,7 @@ const Navigation = ({ onRouteChange, signedIn }) => {
 							}}
 							href='#'
 						>
-							Log In
+							Sign In
 						</a>
 					</li>
 					<li>
