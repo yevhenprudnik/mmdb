@@ -8,7 +8,6 @@ import Movies from './component/moviesdb/Movies'
 import Picker from './component/picker/Picker'
 
 const initialState = {
-	refresh: false,
 	route: 'home',
 	signedIn: false,
 	username: '',
@@ -21,7 +20,7 @@ class App extends Component {
 	}
 	onRouteChange = route => {
 		if (route === 'signOut') {
-			localStorage.removeItem('id')
+			localStorage.removeItem('token')
 			this.setState(initialState)
 		}
 		this.setState({ route: route })
@@ -32,7 +31,7 @@ class App extends Component {
 	onSignIn = () => {
 		this.setState({ signedIn: true })
 	}
-	getMovies(){
+	getMovies = () => {
 		fetch('https://my-movie-d-base.herokuapp.com/getMovies', {
 			method: 'get',
 			headers: { 'Content-Type': 'application/json' },
@@ -42,25 +41,34 @@ class App extends Component {
 				this.setState({ movies: data })
 			})
 	}
-	IsSignedIn(e){
-		if (!e) {
-			this.setState({ refresh: true })
-			let id = localStorage.getItem('id')
-			if (id) {
-				this.setState({ signedIn: true })
-			}
-		};
+	IsSignedIn = () => {
+		let token = localStorage.getItem('token')
+		if (token) {
+			fetch('https://my-movie-d-base.herokuapp.com/isSignedIn', {
+				method: 'POST',
+				headers: {
+				'Content-Type': 'application/json',
+				'Authorization': token
+				}
+			})
+			.then(data => data.json())
+			.then(response => {
+				if (response == 'valid'){
+					this.setState({ signedIn: true})
+				}
+			})
+		}
 	}
 	componentDidUpdate(prevProps, prevState){
 		if (prevState.signedIn !== this.state.signedIn) {
-			this.IsSignedIn(false)
+			this.IsSignedIn()
 		}
 		if (this.state.movies.length == 1) {
 			this.getMovies();
 		}
 	}
 	componentDidMount() {
-		this.IsSignedIn(false)
+		this.IsSignedIn()
 		this.getMovies()
 	}
 

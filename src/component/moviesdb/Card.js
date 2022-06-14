@@ -18,14 +18,13 @@ class Card extends React.Component {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    id : localStorage.getItem('id'),
+                    token : localStorage.getItem('token'),
                     movie: this.state.selectedMovie,
                     rate: this.state.rating
                 }),
             })
             .then(response => response.json())
 			.then(data => {
-                console.log(data)
                 data == "ok" ?
                 Swal.fire({
                     icon: 'success',
@@ -55,7 +54,7 @@ class Card extends React.Component {
     render() {
         const {title, subtitle, year, genre, topCast, synopsis, image, trailer} = this.props
         return(
-            <div className="dib br3 pa3 ma3 grow shadow-5 cardComponent" onMouseEnter={() => this.setState({selectedMovie : title})}>
+            <div className="dib br3 pa3 ma3 grow1 shadow-5 cardComponent" onMouseEnter={() => this.setState({selectedMovie : title})}>
                 <div className="container">
                     <div className = "pr4 photo">
                         <img className = "br4" src={image}/>

@@ -33,7 +33,7 @@ class Register extends React.Component {
 					swal('Good job!', 'You did it))', 'success')
 					this.props.onUserChange(this.state.username)
 					this.props.onSignIn()
-					localStorage.setItem('id' , data)
+					localStorage.setItem('token' , data)
 					this.props.onRouteChange('home')
 				} else if (data == "You are already registered, please sign in") {
 					swal(

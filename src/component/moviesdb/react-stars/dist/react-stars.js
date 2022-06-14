@@ -155,7 +155,7 @@ var ReactStars = function (_Component) {
 
       var mouseAt = event.clientX - target.getBoundingClientRect().left;
       mouseAt = Math.round(Math.abs(mouseAt));
-      return mouseAt > size / 2;
+      return mouseAt > size*8;
     }
   }, {
     key: 'mouseLeave',
