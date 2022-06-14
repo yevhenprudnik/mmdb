@@ -43,7 +43,7 @@ class SignIn extends React.Component {
 					})
 					this.props.onUserChange(this.state.username)
 					this.props.onSignIn()
-					localStorage.setItem('id' , data._id)
+					localStorage.setItem('token' , data)
 					this.props.onRouteChange('home')
 				} else {
 					swal('Oops', 'Wrong username or password!', 'error')

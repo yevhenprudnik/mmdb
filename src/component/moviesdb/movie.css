@@ -67,3 +67,10 @@
 .pbb2{
     padding-bottom: 0.2vw;
 }
+.grow1 { -moz-osx-font-smoothing: grayscale; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transform: translateZ( 0 ); transform: translateZ( 0 ); transition: -webkit-transform .25s ease-out; transition: transform .25s ease-out; transition: transform .25s ease-out, -webkit-transform .25s ease-out; }
+.grow1:hover{ -webkit-transform: scale( 1.05 ); transform: scale( 1.05 ); }
+.grow1-large { -moz-osx-font-smoothing: grayscale; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transform: translateZ( 0 ); transform: translateZ( 0 ); transition: -webkit-transform .25s ease-in-out; transition: transform .25s ease-in-out; transition: transform .25s ease-in-out, -webkit-transform .25s ease-in-out; }
+.grow1-large:hover{ -webkit-transform: scale( 1.2 ); transform: scale( 1.2 ); }
+.grow1-large:active { -webkit-transform: scale( .95 ); transform: scale( .95 ); }
+/* Add pointer on hover */
+.pointer:hover { cursor: pointer; }
