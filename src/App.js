@@ -63,7 +63,7 @@ class App extends Component {
 		if (prevState.signedIn !== this.state.signedIn) {
 			this.IsSignedIn()
 		}
-		if (this.state.movies.length == 1) {
+		if (!this.state.movies.length) {
 			this.getMovies();
 		}
 	}
