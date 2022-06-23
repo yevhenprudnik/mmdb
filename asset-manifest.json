@@ -1,18 +1,20 @@
 {
-  "files": {
-    "main.css": "/mmdb/static/css/main.3ebb0163.css",
-    "main.js": "/mmdb/static/js/main.75ffbc91.js",
-    "static/js/787.cd5f0e8d.chunk.js": "/mmdb/static/js/787.cd5f0e8d.chunk.js",
-    "static/media/bg.jpg": "/mmdb/static/media/bg.543db20797040ef39de6.jpg",
-    "static/media/happy.png": "/mmdb/static/media/happy.abd14a4488da265842c9.png",
-    "static/media/sad.png": "/mmdb/static/media/sad.5cf952aae88691fcb2ee.png",
-    "index.html": "/mmdb/index.html",
-    "main.3ebb0163.css.map": "/mmdb/static/css/main.3ebb0163.css.map",
-    "main.75ffbc91.js.map": "/mmdb/static/js/main.75ffbc91.js.map",
-    "787.cd5f0e8d.chunk.js.map": "/mmdb/static/js/787.cd5f0e8d.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.3ebb0163.css",
-    "static/js/main.75ffbc91.js"
-  ]
+  "main.css": "/mmdb/static/css/main.5ba78090.chunk.css",
+  "main.js": "/mmdb/static/js/main.de78ad9d.chunk.js",
+  "main.js.map": "/mmdb/static/js/main.de78ad9d.chunk.js.map",
+  "static/js/1.1fd78bf7.chunk.js": "/mmdb/static/js/1.1fd78bf7.chunk.js",
+  "static/js/1.1fd78bf7.chunk.js.map": "/mmdb/static/js/1.1fd78bf7.chunk.js.map",
+  "static/css/2.cb848bb6.chunk.css": "/mmdb/static/css/2.cb848bb6.chunk.css",
+  "static/js/2.a3d8ab5c.chunk.js": "/mmdb/static/js/2.a3d8ab5c.chunk.js",
+  "static/js/2.a3d8ab5c.chunk.js.map": "/mmdb/static/js/2.a3d8ab5c.chunk.js.map",
+  "runtime~main.js": "/mmdb/static/js/runtime~main.0fa9f5ef.js",
+  "runtime~main.js.map": "/mmdb/static/js/runtime~main.0fa9f5ef.js.map",
+  "static/media/sad.png": "/mmdb/static/media/sad.19a7a199.png",
+  "static/media/happy.png": "/mmdb/static/media/happy.6f5d9e98.png",
+  "static/media/index.css": "/mmdb/static/media/bg.377f3c68.jpg",
+  "static/css/main.5ba78090.chunk.css.map": "/mmdb/static/css/main.5ba78090.chunk.css.map",
+  "static/css/2.cb848bb6.chunk.css.map": "/mmdb/static/css/2.cb848bb6.chunk.css.map",
+  "index.html": "/mmdb/index.html",
+  "precache-manifest.396038dc07edc69016cff0afa7abee61.js": "/mmdb/precache-manifest.396038dc07edc69016cff0afa7abee61.js",
+  "service-worker.js": "/mmdb/service-worker.js"
 }
