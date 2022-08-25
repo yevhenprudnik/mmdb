@@ -1,6 +1,6 @@
 {
   "name": "mmdb",
-  "homepage": "https://yevhenprudnik.github.io/mmdb",
+  "homepage": "https://yevhenprudnik.github.io/mmdb/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^2.1.3",
     "react-scrollchor": "^7.0.2",
     "react-stars": "^2.2.5",
     "sweetalert": "^2.1.2",
